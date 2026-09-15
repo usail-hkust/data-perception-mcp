@@ -1,0 +1,6 @@
+customer_id,tenure_months,monthly_charge,churn
+c001,12,49.0,0
+c002,2,79.0,1
+c003,24,49.0,0
+c004,6,,1
+c005,18,59.0,0

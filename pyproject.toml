@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "data-perception-mcp"
+version = "0.1.0"
+description = "Local dataset profiling and optional model-assisted Data Context over MCP"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = ["mcp>=1.12,<2", "pandas>=2.2,<3", "pyarrow>=17", "openpyxl>=3.1", "huggingface-hub>=0.25,<2"]
+
+[project.optional-dependencies]
+model = ["transformers>=4.45,<5", "torch>=2.2", "accelerate>=0.34", "safetensors>=0.4"]
+dev = ["pytest>=8", "pytest-asyncio>=0.24", "build", "twine", "ruff"]
+
+[project.scripts]
+data-perception-mcp = "data_perception_mcp.cli:main"
+data-perception = "data_perception_mcp.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/usail-hkust/data-perception-mcp"
+Issues = "https://github.com/usail-hkust/data-perception-mcp/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/data_perception_mcp"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
